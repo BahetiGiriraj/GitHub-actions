@@ -1,0 +1,37 @@
+name: Portfolio
+
+on:
+  push:
+    branches: [main]
+
+    workflow_dispatch:
+  
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+
+jobs:
+  deploy:
+    runs-on: ubuntu-slim
+
+    steps:  #access to code 
+      -name: Checkout
+       uses: actions/checkout@v4
+       path: "."
+
+      # enable pages and get metadata about the site 
+      -name: Deploy Setup Pages
+        needs: Checkout
+        uses: actions/configure-pages@v5
+      # static code loads , cache and deploys to github pages
+      -name: Artifact
+        needs: Deploy
+        uses: actions/upload-pages-artifact@v4
+      # deploy the artifact to github pages
+      -name: Pages
+        needs: Artifact
+        uses: actions/deploy-pages@v4
+
