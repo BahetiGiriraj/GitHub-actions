@@ -1,0 +1,15 @@
+name: Giriraj
+location: pune
+
+
+on: 
+  push:
+    branches: main
+jobs:
+  whatAreyouDoing:
+    runs-on: ubuntu-slim
+    steps:
+      - name: I am fine
+        run: echo "Hello I am fine"
+      - name: What about you
+        run: echo "I am also fine"
