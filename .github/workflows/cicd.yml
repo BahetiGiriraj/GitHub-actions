@@ -12,18 +12,23 @@ jobs:
       - name: write your code
         run: echo "Code is completed"
   build:
+    needs: code
     runs-on: ubuntu-slim
     steps:
       - name: build your code
         run: echo "used docker to build"
   
-  deploy:
-    runs-on: ubuntu-slim
-    steps:
-      - name: deploy your code
-        run: echo "Code is deployed on ec2"
   test:
+    needs: build
     runs-on: ubuntu-slim
     steps:
       - name: test your code
         run: echo "tested on gitlab"
+
+
+  deploy:
+    needs: [build,test]
+    runs-on: ubuntu-slim
+    steps:
+      - name: deploy your code
+        run: echo "Code is deployed on ec2"
