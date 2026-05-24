@@ -13,3 +13,9 @@ jobs:
         run: echo "Hello I am fine"
       - name: What about you
         run: echo "I am also fine"
+
+  details:
+    runs-on: ubuntu-slim
+    steps:
+      - name: give me the version of docker and python
+        run: docker --version && python --version
