@@ -37,7 +37,7 @@ jobs:
 
 
   deploy:
-    if: inputs.environment == "dev"
+    if: inputs.environment == 'dev'
     needs: [build,test]
     runs-on: ubuntu-slim
     steps:
