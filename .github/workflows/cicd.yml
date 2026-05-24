@@ -1,0 +1,29 @@
+name: cicd
+
+on: 
+  workflow_dispatch: 
+
+
+jobs:
+
+  code:
+    runs-on: ubuntu-slim
+    steps:
+      - name: write your code
+        run: echo "Code is completed"
+  build:
+    runs-on: ubuntu-slim
+    steps:
+      - name: build your code
+        run: echo "used docker to build"
+  
+  deploy:
+    runs-on: ubuntu-slim
+    steps:
+      - name: deploy your code
+        run: echo "Code is deployed on ec2"
+  test:
+    runs-on: ubuntu-slim
+    steps:
+      - name: test your code
+        run: echo "tested on gitlab"
