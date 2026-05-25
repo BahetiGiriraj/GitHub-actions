@@ -20,4 +20,8 @@ jobs:
         run: date +"%Y-%m-%dT%H:%M:%SZ"
 
       - name: Print branch
-        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+        - name: Save and print branch
+          run: |
+            BRANCH=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
+            echo "Branch: $BRANCH"
+            echo "branch=$BRANCH" >> $GITHUB_OUTPUT
