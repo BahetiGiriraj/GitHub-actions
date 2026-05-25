@@ -3,6 +3,10 @@ role: devops enginner
 experience_years: 3
 learning: true
 
+
+on:
+  workflow_dispatch:
+    
 tools: 
   - github
   - gitlab
