@@ -1,0 +1,15 @@
+
+name: server
+
+on:
+  workflow_dispatch: 
+server:
+  name: girirajServer
+  ip: 192.168.17.1
+  port: 80
+database:
+  host: local
+  name: grir
+  credentials:
+    user: giriraj
+    password: baheti
