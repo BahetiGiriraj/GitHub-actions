@@ -1,18 +1,23 @@
-
 name: hello
+
 on:
   push:
     branches:
       - main
+
 jobs:
   greet:
     runs-on: ubuntu-latest
+
     steps:
       - name: Code access
         uses: actions/checkout@v4
+
       - name: Print
         run: echo "Hello from GitHub Actions!"
+
       - name: Date and time
         run: date +"%Y-%m-%dT%H:%M:%SZ"
-      - name: Print branch name
+
+      - name: Print branch
         run: echo "Branch name: ${{ github.ref_name }}"
