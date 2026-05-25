@@ -1,0 +1,14 @@
+name: giriraj
+role: devops enginner
+experience_years: 3
+learning: true
+
+tools: 
+  - github
+  - gitlab
+  - docker
+  - ansible
+  - terraform
+
+
+hobbies: [badminton, swimming, learning, playing with cats]
