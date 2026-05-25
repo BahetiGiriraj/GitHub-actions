@@ -3,6 +3,8 @@ name: server
 
 on:
   workflow_dispatch: 
+
+  
 server:
   name: girirajServer
   ip: 192.168.17.1
@@ -13,3 +15,14 @@ database:
   credentials:
     user: giriraj
     password: baheti
+
+
+startup_script: | 
+  This is a block style (preserves newlines) concurrency.
+  New line
+  Will not end in single line 
+
+startup_script_two: > 
+  Will end in single line
+  Even this next line
+  Hello
