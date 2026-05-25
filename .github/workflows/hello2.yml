@@ -1,17 +1,14 @@
-name: hello
 
+name: hello
 on:
   push:
-    branches: main
-
-greet:
-  runs-on: ubuntu-latest
-
-  steps:
-    -name: Code access
-      uses: actions/checkout@v4
-
-    -name: Print
-      run: echo "Hello from GitHub Actions!"
-
-  
+    branches:
+      - main
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code access
+        uses: actions/checkout@v4
+      - name: Print
+        run: echo "Hello from GitHub Actions!"
