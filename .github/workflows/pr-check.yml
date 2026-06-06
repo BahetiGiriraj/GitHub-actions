@@ -1,0 +1,19 @@
+name: PullRequest
+
+on:
+  pull_request:
+    branches: [main]
+
+
+jobs:
+  check:
+    runs-on: ubuntu-slim
+
+    steps:
+       steps:
+        - name: Checkout repository code
+          uses: actions/checkout@v4
+
+        - name: PR Branch Check
+          run: echo "PR check running for branch: ${{ github.head_ref }}"
+
