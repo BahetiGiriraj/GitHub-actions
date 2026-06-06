@@ -4,16 +4,13 @@ on:
   pull_request:
     branches: [main]
 
-
 jobs:
   check:
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
 
     steps:
-       steps:
-        - name: Checkout repository code
-          uses: actions/checkout@v4
+      - name: Checkout repository code
+        uses: actions/checkout@v4
 
-        - name: PR Branch Check
-          run: echo "PR check running for branch: ${{ github.head_ref }}"
-
+      - name: PR Branch Check
+        run: echo "PR check running for branch:${{ github.head_ref }}"
