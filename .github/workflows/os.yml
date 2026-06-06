@@ -9,6 +9,7 @@ jobs:
     steps:
       - name: Print Ubuntu Details
         run: |
+          docker --version && python --version && node --version && git --version 
           echo "The operating system is ${{ runner.os }}"
           hostname
           echo "The user running this job is ${{ github.actor }}"
