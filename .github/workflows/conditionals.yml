@@ -24,12 +24,12 @@ jobs:
         continue-on-error: true
         run: |
           echo "This step will fail"
-          exit 1
+        
         
       - name: Failed step
         continue-on-error: true
         id: failed
-        run: echo "
+        run: echo ""
 
       - name: Step before it failed
         if: steps.failed.outcome == 'failure'
