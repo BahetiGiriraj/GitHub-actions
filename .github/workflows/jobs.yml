@@ -1,0 +1,28 @@
+name: Jobs Output
+
+on:
+  workflow_dispatch:
+
+
+
+jobs:
+  Job1:
+    runs-on: ubuntu-latest
+    outputs:
+      date_string: ${{ steps.set_date.outputs.CURRENT_DATE }}
+    
+    steps:
+      - name: Create an outputd
+        run: echo :Get the date"
+
+
+  Job2:
+    needs: Job1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print the date from Job1
+        run: echo "${{needs.Job1.outputs.date_string}}"
+
+
+
+  
