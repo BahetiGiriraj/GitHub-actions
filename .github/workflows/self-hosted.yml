@@ -1,0 +1,21 @@
+name: self-hosted
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check:
+    runs-on: self-hosted
+
+    steps:
+      - name: Test Self-hosted Runner
+        run: |
+          hostname
+          pwd
+          echo "Creating verification file..."
+          echo "GitHub Runner Test" > runner-verification.txt
+
+          echo "Checking file list:"
+          ls -la runner-verification.txt
