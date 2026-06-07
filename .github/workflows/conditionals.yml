@@ -1,0 +1,36 @@
+name: Conditionals
+
+on:
+  push:
+      branches: main
+
+  workflow_dispatch:
+
+
+
+jobs:
+  check_cond:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run only for branch main
+        if: ${{github.ref_name == 'main'}}
+        run: echo "Run beacuse push to branch main"
+
+      - name: Run on push event
+        if: ${{github.event_name == 'push'}}
+        run: echo "Event is runned because pushed on push not pull" 
+
+      - name: Continue on error
+        continue-on-error: true
+        run: |
+          echo "This step will fail"
+          exit 1
+        
+      - name: Failed step
+        continue-on-error: true
+        id: failed
+        run: echo "
+
+      - name: Step before it failed
+        if: steps.failed.outcome == 'failure'
+        run: echo "past step is failed"
