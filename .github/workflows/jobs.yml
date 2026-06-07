@@ -13,7 +13,7 @@ jobs:
     
     steps:
       - name: Create an outputd
-        run: echo :Get the date"
+        run: echo "Get the date"
 
 
   Job2:
