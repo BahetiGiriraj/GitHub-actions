@@ -16,6 +16,9 @@ jobs:
 
       - name: Upload as an artifact
         uses: actions/upload-artifact@v7
+        with:
+          name: artifact
+          path: file1.txt
 
   Deploy:
     needs: Build
@@ -25,6 +28,8 @@ jobs:
     steps:
       - name: Download an artifact
         uses: actions/download-artifact@v4
+        with:
+          name: artifact
 
       - name: Print artifact content
         run: cat file1.txt
