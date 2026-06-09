@@ -29,4 +29,6 @@ jobs:
           tags: |
             girirajbaheti/github-actions-demo:latest
             girirajbaheti/github-actions-demo:${{github.ref_name}}
+            girirajbaheti/github-actions-demo:${{github.sha}}
+
           
