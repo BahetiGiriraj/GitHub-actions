@@ -1,0 +1,21 @@
+name: CodeCheck Python
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  Check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v6
+
+
+      - name: Setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
+
+      - name: Run the script
+        run: python app.py
