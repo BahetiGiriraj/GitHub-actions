@@ -1,0 +1,31 @@
+name: Artifacts
+
+on:
+  workflow_dispatch:
+
+
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Generate a file
+        run: echo "This is a file one" > file1.txt
+        
+
+      - name: Upload as an artifact
+        uses: actions/upload-artifact@v7
+
+  Deploy:
+    needs: Build
+    runs-on: ubuntu-latest
+
+
+    steps:
+      - name: Download an artifact
+        uses: actions/download-artifact@v4
+
+      - name: Print artifact content
+        run: cat file1.txt
+        
