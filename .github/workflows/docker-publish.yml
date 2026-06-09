@@ -25,3 +25,4 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           file: ./Dockerfile
+          push: true
