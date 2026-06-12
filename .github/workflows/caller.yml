@@ -1,23 +1,16 @@
+---
 name: Caller
-
 on:
-  workflow_dispatch:
-  
-
-
+  workflow_dispatch: null
 jobs:
   build:
     uses: ./github/workflows/reusable-build.yml
     with:
       app_name: myapp
-
       environment: production
-
     secrets:
-
       docker_token: ${{ secrets.DOCKERHUB_TOKEN }}
-
-   print-version:
+  print-version:
     needs: build
     runs-on: ubuntu-latest
     steps:
