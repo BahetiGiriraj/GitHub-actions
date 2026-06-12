@@ -4,7 +4,7 @@ on:
   workflow_dispatch: null
 jobs:
   build:
-    uses: ./github/workflows/reusable-build.yml
+    uses: ./.github/workflows/reusable-build.yml
     with:
       app_name: myapp
       environment: production
