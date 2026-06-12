@@ -1,0 +1,33 @@
+name: Reusable functions
+
+on:
+  workflow_call:
+    inputs:
+      app_name:
+        required: true
+        type: string
+      environment:
+        required: true
+        type: string
+        default: staging
+    secrets:
+      docker_token:
+        required: true
+
+
+
+jobs:
+  functions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Build information
+        run: |
+          echo "building ${{inputs.app_name}} for ${{inputs.environment}}
+
+      - name: Docker set me
+        run: |
+          echo "Docker token is set ${{secrets.docker_token != ''}}"
+      
