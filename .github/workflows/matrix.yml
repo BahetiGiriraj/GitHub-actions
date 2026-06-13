@@ -1,0 +1,35 @@
+name: Matrix
+on:
+  workflow_dispatch: 
+
+jobs:
+  matrix:
+    name: Run Python ${{ matrix.python-version }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false # This guarantees the other 5 jobs won't be cancelled when one crashes
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: ["3.9", "3.11", "3.12"]
+        
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          
+      - name: Print Python Version
+        run: python --version
+
+      # This step intentionally crashes ONLY the Python 3.9 job on Windows
+      - name: Trigger Test Failure
+        run: |
+          if [ "${{ matrix.os }}" = "windows-latest" ] && [ "${{ matrix.python-version }}" = "3.9" ]; then
+            echo "Deliberately failing Python 3.9 on Windows to test fail-fast!"
+            exit 1
+          else
+            echo "Everything is fine on ${{ matrix.os }} with Python ${{ matrix.python-version }}"
+           desert

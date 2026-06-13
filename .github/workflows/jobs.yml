@@ -1,0 +1,25 @@
+name: Jobs Output
+
+on:
+  workflow_dispatch:
+
+jobs:
+  Job1:
+    runs-on: ubuntu-latest
+
+    outputs:
+      date_string: ${{ steps.set_date.outputs.CURRENT_DATE }}
+
+    steps:
+      - name: Create date output
+        id: set_date
+        run: |
+          echo "CURRENT_DATE=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+  Job2:
+    needs: Job1
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print the date from Job1
+        run: echo "Date from Job1 = ${{ needs.Job1.outputs.date_string }}"

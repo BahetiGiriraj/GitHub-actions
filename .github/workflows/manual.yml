@@ -1,0 +1,21 @@
+name: Manual Trigger
+
+on: 
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Choice from staging/production
+        type: choice
+        options:
+          - staging
+          - production
+
+
+jobs:
+  manual:
+    runs-on: ubuntu-slim
+
+    steps:
+      - name: Print input value 
+        run: echo "The username is ${{ inputs.environment }}"
+        
