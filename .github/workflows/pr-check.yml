@@ -33,3 +33,17 @@ jobs:
           echo "${{ github.base_ref }}"
 
 
+
+  file-size-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code repo
+        uses: actions/checkout@v6
+
+      - name: File size check
+        id: size_check
+        uses: pelotech/github-action-file-size-checker@v0.2.1
+        with:
+          max_file_size_mb: "1"
+
+
