@@ -37,6 +37,7 @@ jobs:
 
 
   file-size-check:
+    needs: check
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code repo
@@ -47,5 +48,24 @@ jobs:
         uses: pelotech/github-action-file-size-checker@v0.2.1
         with:
           max_file_size_mb: "1"
+
+
+  branch-name-check:
+    needs: check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check branch name
+        run: |
+          BRANCH = "${{ github.head_ref }}"
+          echo "Branch is $BRANCH"
+           if [[ "$BRANCH" =~ ^(feature|fix|docs)/.+$ ]]; then
+
+          echo "Valid branch name"
+          else
+            echo "Invalid branch name"
+            echo "Branch must start with feature/, fix/, or docs/"
+            exit 1
+          fi
+        
 
 
