@@ -13,3 +13,4 @@ Created req 1
 Created req 2 
 create req 1 from test-reopen
 new
+new 1
